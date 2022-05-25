@@ -16,46 +16,37 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef __LINUX_GEN_STATS_H
-#define __LINUX_GEN_STATS_H
+#ifndef CXGB3_ABI_USER_H
+#define CXGB3_ABI_USER_H
 #include <linux/types.h>
-enum {
-  TCA_STATS_UNSPEC,
-  TCA_STATS_BASIC,
-  TCA_STATS_RATE_EST,
-  TCA_STATS_QUEUE,
-  TCA_STATS_APP,
-  TCA_STATS_RATE_EST64,
-  TCA_STATS_PAD,
-  TCA_STATS_BASIC_HW,
-  __TCA_STATS_MAX,
+#define IWCH_UVERBS_ABI_VERSION 1
+struct iwch_create_cq_req {
+  __aligned_u64 user_rptr_addr;
 };
-#define TCA_STATS_MAX (__TCA_STATS_MAX - 1)
-struct gnet_stats_basic {
-  __u64 bytes;
-  __u32 packets;
+struct iwch_create_cq_resp_v0 {
+  __aligned_u64 key;
+  __u32 cqid;
+  __u32 size_log2;
 };
-struct gnet_stats_basic_packed {
-  __u64 bytes;
-  __u32 packets;
-} __attribute__((packed));
-struct gnet_stats_rate_est {
-  __u32 bps;
-  __u32 pps;
+struct iwch_create_cq_resp {
+  __aligned_u64 key;
+  __u32 cqid;
+  __u32 size_log2;
+  __u32 memsize;
+  __u32 reserved;
 };
-struct gnet_stats_rate_est64 {
-  __u64 bps;
-  __u64 pps;
+struct iwch_create_qp_resp {
+  __aligned_u64 key;
+  __aligned_u64 db_key;
+  __u32 qpid;
+  __u32 size_log2;
+  __u32 sq_size_log2;
+  __u32 rq_size_log2;
 };
-struct gnet_stats_queue {
-  __u32 qlen;
-  __u32 backlog;
-  __u32 drops;
-  __u32 requeues;
-  __u32 overlimits;
+struct iwch_reg_user_mr_resp {
+  __u32 pbl_addr;
 };
-struct gnet_estimator {
-  signed char interval;
-  unsigned char ewma_log;
+struct iwch_alloc_pd_resp {
+  __u32 pdid;
 };
 #endif

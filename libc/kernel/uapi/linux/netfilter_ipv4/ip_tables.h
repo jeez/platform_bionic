@@ -121,6 +121,6 @@ struct ipt_get_entries {
   struct ipt_entry entrytable[0];
 };
 static __inline__ struct xt_entry_target * ipt_get_target(struct ipt_entry * e) {
-  return(struct xt_entry_target *) ((char *) e + e->target_offset);
+  return(void *) e + e->target_offset;
 }
 #endif

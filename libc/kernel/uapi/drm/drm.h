@@ -435,12 +435,11 @@ struct drm_syncobj_array {
   __u32 count_handles;
   __u32 pad;
 };
-#define DRM_SYNCOBJ_QUERY_FLAGS_LAST_SUBMITTED (1 << 0)
 struct drm_syncobj_timeline_array {
   __u64 handles;
   __u64 points;
   __u32 count_handles;
-  __u32 flags;
+  __u32 pad;
 };
 struct drm_crtc_get_sequence {
   __u32 crtc_id;

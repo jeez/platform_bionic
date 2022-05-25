@@ -60,7 +60,6 @@ struct seccomp_notif {
   __u32 flags;
   struct seccomp_data data;
 };
-#define SECCOMP_USER_NOTIF_FLAG_CONTINUE (1UL << 0)
 struct seccomp_notif_resp {
   __u64 id;
   __s64 val;
